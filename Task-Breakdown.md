@@ -1,7 +1,7 @@
 # Basic Flask App Layout 
-1. Create Python environment for this project and git repo
-2. Create general flask app layout structure
-3. Create application factory for Flask app
+1. Create Python environment for this project and git repo - :white_check_mark:
+2. Create general flask app layout structure - :white_check_mark:
+3. Create application factory for Flask app - :white_check_mark:
 
 # Basic Landing Page 
 1. Create public landing page 
