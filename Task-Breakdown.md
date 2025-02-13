@@ -5,10 +5,10 @@
 
 # Basic Landing Page 
 1. Create public landing page 
-    1. create home.html template and routes
+    1. create home.html template and routes - :white_check_mark:
 2. Find a way to get financial ticker data 
-    1. From an API 
-    2. From a Python package 
+    1. From an API - :white_check_mark:
+    2. From a Python package - :white_check_mark:
 3. Create function that grabs ticker data for a hardcoded ticker symbol e.g. AAPL is Apple Inc. Set default Time period as 3 months of daily ticker data.
 4. Create a visual chart for the returned data
 5. Create a table for the returned data 
