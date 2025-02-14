@@ -37,7 +37,7 @@ def query_finazon(ticker = "AAPL", api_key = None):
 
     # generate url for API request; 
      # generate url for API request: 
-    url = f'https://api.twelvedata.com/time_series?symbol=AAPL&interval=1day&apikey={api_key}&dp=2&start_date=2025-01-01'
+    url = f'https://api.twelvedata.com/time_series?symbol=AAPL&interval=1day&apikey={api_key}&dp=2&start_date=2010-01-01'
     #get request back
     r = requests.get(url)
     # get the data: 
@@ -45,9 +45,16 @@ def query_finazon(ticker = "AAPL", api_key = None):
     # format the data into something useful for the flask app
     ticker_name = data['meta']['symbol']
     # ticker data in datetime format: close prices
-    ticker_dict = []
+    ticker_dates = [] 
+    ticker_values = []
     for value in data['values']: 
-            extraction = {value['datetime'],value['close']}
-            ticker_dict.append(extraction)
+            ticker_dates.append(value['datetime'])
+            ticker_values.append(value['close'])
 
-    return ticker_name, ticker_dict
+    # reverse the dates as these are most recent -> oldest: 
+    ticker_dates.reverse()
+    ticker_values.reverse()
+
+    # define plot data: 
+
+    return ticker_name, ticker_dates, ticker_values

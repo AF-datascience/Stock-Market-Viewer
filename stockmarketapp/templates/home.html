@@ -9,19 +9,19 @@
 
 
 <div>
-  <canvas id = "newChart" width="400" height="400"></canvas>
+  <canvas id = "newChart"></canvas>
 <body>
   <script>
   const ctx = document.getElementById('newChart');
-  var ticker_data = '{{ticker_data}}'
+  const labels = {{labels|tojson}};
   new Chart(ctx, {
     type: 'line',
     data: {
-      labels: ticker_data,
+      labels: labels,
       datasets: [{
-        data: {{ticker_data}},
+        data: {{data|tojson}},
         label: {{ticker_name|tojson|safe}},
-        borderColor: 'rgb(75, 192, 192)',
+        borderColor: '#ff6384',
         tension: 0.1
       }]
     },
@@ -30,7 +30,8 @@
         y: {
           beginAtZero: true
         }
-      }
+      }, 
+      responsive: true
     }
   });
   </script>

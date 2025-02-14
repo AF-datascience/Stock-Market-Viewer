@@ -28,15 +28,11 @@ def home():
     #     ticker_dict[key] = value['4. close']
     
     # use finazon web query api code: 
-    ticker_output = query_finazon(api_key=current_app.config['FINAZON_API_KEY'])
-    # get the ticker vairables on their own 
-    ticker_name = ticker_output[0]
-    ticker_data = ticker_output[1]
-
- 
-
+    ticker_name, ticker_dates, ticker_values = query_finazon(api_key=current_app.config['FINAZON_API_KEY'])
+    
 
     # this renders some dummy data to the screen for now
     # we will change it later on: 
     # return render_template("home.html", ticker_dict = ticker_dict, ticker_name = ticker_name)
-    return render_template("home.html", ticker_name = ticker_name, ticker_data = ticker_data)
+    return render_template("home.html", ticker_name = ticker_name, labels = ticker_dates, 
+                           data = ticker_values)
