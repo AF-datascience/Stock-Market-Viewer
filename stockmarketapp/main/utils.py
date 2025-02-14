@@ -28,3 +28,26 @@ def query_alpha_advantage(ticker = "AAPL", api_key = None):
     data = r.json()
 
     return data
+
+# quyery the new finazon website api 
+# this has a rate limit of 800 calls which shoul dbe enough 
+# for this project: 
+
+def query_finazon(ticker = "AAPL", api_key = None): 
+
+    # generate url for API request; 
+     # generate url for API request: 
+    url = f'https://api.twelvedata.com/time_series?symbol=AAPL&interval=1day&apikey={api_key}&dp=2&start_date=2025-01-01'
+    #get request back
+    r = requests.get(url)
+    # get the data: 
+    data = r.json()
+    # format the data into something useful for the flask app
+    ticker_name = data['meta']['symbol']
+    # ticker data in datetime format: close prices
+    ticker_dict = []
+    for value in data['values']: 
+            extraction = {value['datetime'],value['close']}
+            ticker_dict.append(extraction)
+
+    return ticker_name, ticker_dict

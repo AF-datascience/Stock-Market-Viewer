@@ -4,30 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <script src = "https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js"></script>
+    <script src = "https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
+
+<div>
+  <canvas id = "newChart" width="400" height="400"></canvas>
 <body>
-    <canvas id = "lineChart" width = "900" height = "400"></canvas>
-    <script>
-        var ctx = document.getElementById("lineChart").getContext("2d")
-        var lineChart = new Chart(ctx, {
-            type: "line", 
-            data: {
-                labels: {{labels| safe}}, 
-                datasets: [
-                    {
-                        label: "Date", 
-                        data: {{values | safe}}, 
-                        fill: false, 
-                        borderColor: "rgb(75, 192, 192)", 
-                        lineTension: 0.1
-                    }
-                ]
-            }, 
-            options: {
-                responsive: false
-            }
-        })
-    </script>
+  <script>
+  const ctx = document.getElementById('newChart');
+  var ticker_data = '{{ticker_data}}'
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ticker_data,
+      datasets: [{
+        data: {{ticker_data}},
+        label: {{ticker_name|tojson|safe}},
+        borderColor: 'rgb(75, 192, 192)',
+        tension: 0.1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+  </script>
 </body>
+</div>
+
 </html>
