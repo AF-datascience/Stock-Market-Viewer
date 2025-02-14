@@ -21,7 +21,7 @@ def query_yfinance(ticker = "AAPL", period = "3mo"):
 
 def query_alpha_advantage(ticker = "AAPL", api_key = None): 
     # generate url for API request: 
-    url = f'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={ticker}&apikey={api_key}'
+    url = f'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={ticker}&outputsize=full&apikey={api_key}'
     #get request back
     r = requests.get(url)
     # get the data : 

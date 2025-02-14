@@ -1,7 +1,7 @@
 # This is the basic main routes for the home page 
 from flask import render_template, Blueprint, current_app
 import stockmarketapp
-from stockmarketapp.main.utils import query_yfinance, query_alpha_advantage
+from stockmarketapp.main.utils import query_alpha_advantage
 import requests
 
 # creating a bleuprint - passing in the name like an instance 
@@ -9,7 +9,7 @@ main = Blueprint('main', __name__)
 
 # setup the app routes 
 # where a user will go to see different pages: 
-@main.route("/")
+@main.route("/", methods = ['GET', 'POST'])
 @main.route("/home")
 # render the template from the templates directory for the home page: 
 def home(): 
@@ -20,10 +20,15 @@ def home():
     # example_data = query_yfinance()
     
     # new alpha advantage function: 
-    example_data = query_alpha_advantage('AAPL', api_key = current_app.config['API_KEY'])
-    
-    
+    ticker_df = query_alpha_advantage('AAPL', api_key = current_app.config['API_KEY'])
+    # get ticker name
+    ticker_name = ticker_df['Meta Data']['2. Symbol']
+    # get close prices: 
+    ticker_dict = {}
+    for key, value in ticker_df['Time Series (Daily)'].items(): 
+        ticker_dict[key] = value['4. close']
+
     # this renders some dummy data to the screen for now
     # we will change it later on: 
-    return render_template("home.html", example_data =example_data)
+    return render_template("home.html", ticker_dict = ticker_dict, ticker_name = ticker_name)
 
