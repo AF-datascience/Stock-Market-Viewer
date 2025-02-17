@@ -11,7 +11,7 @@
     2. From a Python package - :white_check_mark:
 3. Create function that grabs ticker data for a hardcoded ticker symbol e.g. AAPL is Apple Inc. Set default Time period as 3 months of daily ticker data.:white_check_mark: - **done on 14/02/2025**
 4. Create a visual chart for the returned data :white_check_mark:
-5. Create a table for the returned data 
+5. Create a table for the returned data :white_check_mark:
 6. Create a way so that a user can select a share and it follows through to a page designed for that page only e.g. they click on AAPL and it loads a page dedicated to AAPL and not the home page.
 
 # Basic User Account Management

@@ -36,3 +36,17 @@ def home():
     # return render_template("home.html", ticker_dict = ticker_dict, ticker_name = ticker_name)
     return render_template("home.html", ticker_name = ticker_name, labels = ticker_dates, 
                            data = ticker_values, temp_data = temp_data)
+
+
+# new route which has a linking feature 
+# this will take a user to a page for that specific stock 
+# they click "go to this stock button" 
+
+@main.route("/stock/<name>", methods = ['GET'])
+def go_to_stock(name):
+
+    # use finazon web query api code: 
+    ticker_name, ticker_dates, ticker_values, temp_data = query_finazon(api_key=current_app.config['FINAZON_API_KEY'])
+    
+    name = ticker_name 
+
