@@ -1,6 +1,6 @@
 from flask import Flask 
 from stockmarketapp.config import Config
-
+from datetime import datetime
 # create function app: 
 def create_app(): 
     # create app

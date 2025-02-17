@@ -4,6 +4,7 @@
 
 import yfinance as yf 
 import requests
+import pandas as pd
 
 # function to query yfinance package 
 # take in a ticker - set default to Apple: 
@@ -55,6 +56,9 @@ def query_finazon(ticker = "AAPL", api_key = None):
     ticker_dates.reverse()
     ticker_values.reverse()
 
-    # define plot data: 
+     # define plot data: 
+    temp_data = [list(a) for a in zip(ticker_dates, ticker_values)]
 
-    return ticker_name, ticker_dates, ticker_values
+    print(temp_data[:5])
+
+    return ticker_name, ticker_dates, ticker_values, temp_data
